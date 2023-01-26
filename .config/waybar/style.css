@@ -1,0 +1,12 @@
+* {
+    font-family: scientifica;
+}
+
+button {
+    border-radius: 0;
+}
+
+#workspaces button.focused {
+    border-bottom: 1px solid white;
+    color: white;
+}

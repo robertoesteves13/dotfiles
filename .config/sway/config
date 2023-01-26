@@ -14,7 +14,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term alacritty
+set $term kitty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -36,8 +36,6 @@ set $monitor2 "HDMI-A-1"
 
 output $monitor1 pos 1920 0 mode 1920x1080@239.760hz
 output $monitor2 pos 0 0 mode 1920x1080@74.986hz
-
-output $monitor1 adaptive_sync on
 
 ### Idle configuration
 #
@@ -212,6 +210,9 @@ bindsym $mod+r mode "resize"
 # Status Bar:
 bar swaybar_command waybar
 
+# Workaround for wine
+exec_always xrandr --output $(xrandr | grep -m 1 XWAYLAND | awk '{print $1;}') --primary
+
 include /etc/sway/config.d/*
 
 default_border pixel 1
@@ -224,9 +225,8 @@ bindsym Ctrl+Print exec grim -g "$(slurp)" - | wl-copy
 bindsym Shift+Print exec grim -g "$(swaymsg -t get_tree | jq -j '.. | select(.type?) | select(.focused).rect | "\(.x),\(.y) \(.width)x\(.height)"')" | wl-copy
 
 # Open apps in certain workspaces
-assign [app_id="chromium-browser"] workspace number 3
-assign [title="Discord"] workspace number 4
-assign [class="Spotify"] workspace number 5
+assign [app_id="librewolf"] workspace number 3
+assign [app_id="webcord"] workspace number 4
 
 # Bind workspace to correct monitor
 workspace 1 output $monitor1
