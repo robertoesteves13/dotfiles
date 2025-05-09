@@ -1,0 +1,45 @@
+general {
+  colors = true
+  color_good = "#b8bb26"
+  color_degraded = "#fabd2f"
+  color_bad = "#fb4934"
+  interval = 1
+  separator = "|"
+}
+
+order += "volume master"
+order += "ethernet enp4s0"
+order += "cpu_usage"
+order += "memory"
+order += "disk /"
+order += "time"
+
+memory {
+  memory_used_method = classical
+  format="RAM: %used/%total"
+}
+
+disk "/" {
+  format = "Disk: %free"
+}
+
+cpu_usage {
+  format = "CPU: %usage"
+}
+
+time {
+  format = "%H:%M"
+}
+
+ethernet enp4s0 {
+  format_up = "Local IP: %ip"
+  format_down = "ETH: down"
+}
+
+volume master {
+  format = "Vol: %volume"
+  format_muted = "MUTED"
+  device = "default"
+  mixer = "Master"
+  mixer_idx = 0
+}
