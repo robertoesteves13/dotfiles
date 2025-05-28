@@ -1,13 +1,13 @@
 # The following lines were added by compinstall
-zstyle :compinstall filename '$HOME/.zshrc'
+zstyle :compinstall filename "$ZDOTDIR/.zshrc"
 
 autoload -Uz compinit
-fpath+=~/.zfunc
+fpath+=$ZDOTDIR/.zfunc
 compinit
 
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
+HISTFILE=$ZDOTDIR/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 bindkey -e
@@ -20,6 +20,16 @@ export LSCOLORS=gafacadabaegedabagacad
 
 # Prompt
 PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%~ %{$reset_color%}%% "
+
+eval "$(zoxide init zsh)"
+
+# kitty integration
+if test -n "$KITTY_INSTALLATION_DIR"; then
+    export KITTY_SHELL_INTEGRATION="enabled"
+    autoload -Uz -- "$KITTY_INSTALLATION_DIR"/shell-integration/zsh/kitty-integration
+    kitty-integration
+    unfunction kitty-integration
+fi
 
 # Vim mode
 bindkey -v

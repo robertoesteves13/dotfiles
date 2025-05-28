@@ -231,9 +231,6 @@ bar {
 
 focus_on_window_activation focus
 
-# Workaround for wine
-exec_always xrandr --output "DP-3" --primary
-
 default_border pixel 1
 gaps inner 3
 gaps outer 3

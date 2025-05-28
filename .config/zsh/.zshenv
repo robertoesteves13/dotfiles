@@ -1,39 +1,14 @@
-export EDITOR="nvim"
-export VISUAL="nvim"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
 
-export MANROFFOPT="-c"
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-
-export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
+export PATH="$XDG_CONFIG_HOME/composer/vendor/bin:$PATH"
 
-# pnpm
-export PNPM_HOME="$HOME/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
+# ZVM stuff
+export PATH="$HOME/.zvm/self:$PATH"
+export PATH="$HOME/.zvm/bin:$PATH"
 
-# bun completions
-[ -s "/home/roberto/.bun/_bun" ] && source "/home/roberto/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-# Avoid nesting nvim instances
-if [[ "$TERM" == "xterm-256color" ]]; then
-  export NEOVIM_EDITOR="nvr"
-else
-  export NEOVIM_EDITOR="nvim"
-fi
-
-# ZVM
-export ZVM_INSTALL="$HOME/.zvm/self"
-export PATH="$PATH:$HOME/.zvm/bin"
-export PATH="$PATH:$ZVM_INSTALL/"
-
-eval $(opam env)
-eval "$(zoxide init zsh)"
-eval "$(direnv hook zsh)"
+export EDITOR="nvim"
+export MANPAGER="nvim +Man!"
