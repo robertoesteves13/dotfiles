@@ -17,15 +17,15 @@
           "Rotation": 0.0
         },
         "Tablet": {
-          "Width": 86.0,
-          "Height": 54.0,
-          "X": 109.0,
-          "Y": 67.999985,
+          "Width": 92.0,
+          "Height": 51.75,
+          "X": 105.999985,
+          "Y": 69.124985,
           "Rotation": 180.0
         },
         "EnableClipping": true,
         "EnableAreaLimiting": false,
-        "LockAspectRatio": false
+        "LockAspectRatio": true
       },
       "RelativeModeSettings": {
         "XSensitivity": 10.0,
@@ -34,8 +34,17 @@
         "RelativeResetDelay": "00:00:00.1000000"
       },
       "Bindings": {
-        "TipActivationThreshold": 50.0,
-        "TipButton": null,
+        "TipActivationThreshold": 4.0,
+        "TipButton": {
+          "Path": "OpenTabletDriver.Desktop.Binding.MouseBinding",
+          "Settings": [
+            {
+              "Property": "Button",
+              "Value": "Left"
+            }
+          ],
+          "Enable": true
+        },
         "EraserActivationThreshold": 0.0,
         "EraserButton": null,
         "PenButtons": [
