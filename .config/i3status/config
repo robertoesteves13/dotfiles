@@ -7,8 +7,9 @@ general {
   separator = "|"
 }
 
+order += "battery 0"
 order += "volume master"
-order += "ethernet enp4s0"
+order += "wireless wlan0"
 order += "cpu_usage"
 order += "memory"
 order += "disk /"
@@ -31,9 +32,9 @@ time {
   format = "%H:%M"
 }
 
-ethernet enp4s0 {
-  format_up = "Local IP: %ip"
-  format_down = "ETH: down"
+wireless wlan0 {
+  format_up = "Wifi: %essid"
+  format_down = "Disconnected"
 }
 
 volume master {
@@ -42,4 +43,16 @@ volume master {
   device = "default"
   mixer = "Master"
   mixer_idx = 0
+}
+
+battery 0 {
+  format = "%status %percentage %remaining %emptytime"
+  format_down = "No battery"
+  status_chr = "⚡ CHR"
+  status_bat = "🔋 BAT"
+  status_unk = "? UNK"
+  status_full = "☻ FULL"
+  status_idle = "☻ IDLE"
+  path = "/sys/class/power_supply/BAT%d/uevent"
+  low_threshold = 10
 }
