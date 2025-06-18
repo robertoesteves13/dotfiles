@@ -68,6 +68,8 @@ input type:keyboard {
 
 input type:pointer {
     accel_profile flat
+    natural_scroll enabled
+    tap enabled
 }
 
 ### Key bindings
@@ -266,6 +268,9 @@ workspace 5 output $monitor2
 # Set indicator for Xwayland
 for_window [shell="xwayland"] title_format "[XWayland] %title"
 for_window [title=".*"] allow_tearing yes
+
+# Autostart
+exec wlsunset -l -23.9 -L -46.3 -t 2700
 
 include /etc/sway/config.d/50-systemd-user.conf
 include $HOME/.config/sway/config.d/20-autostart.conf
