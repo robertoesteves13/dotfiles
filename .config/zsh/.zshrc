@@ -31,8 +31,6 @@ if test -n "$KITTY_INSTALLATION_DIR"; then
     unfunction kitty-integration
 fi
 
-alias paru="paru --sudo doas"
-
 # Vim mode
 bindkey -v
 export KEYTIMEOUT=1
