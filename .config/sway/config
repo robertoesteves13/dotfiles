@@ -242,11 +242,12 @@ bindsym Ctrl+Print exec grim -g "$(slurp)" - | wl-copy
 bindsym Shift+Print exec grim -g "$(swaymsg -t get_tree | jq -j '.. | select(.type?) | select(.focused).rect | "\(.x),\(.y) \(.width)x\(.height)"')" | wl-copy
 
 # Bind workspace to correct monitor
-workspace 1 output $monitor1
-workspace 2 output $monitor1
-workspace 3 output $monitor1
-workspace 4 output $monitor2
-workspace 5 output $monitor2
+workspace 9 output $monitor2
+workspace 10 output $monitor2
+
+assign [app_id="zen"] workspace 2
+assign [app_id="vesktop"] workspace 9
+assign [app_id="thunderbird"] workspace 10
 
 # Set indicator for Xwayland
 for_window [shell="xwayland"] title_format "[XWayland] %title"
@@ -254,6 +255,8 @@ for_window [title=".*"] allow_tearing yes
 
 # Autostart
 exec wlsunset -l -23.9 -L -46.3 -t 2700
+exec vesktop
+exec thunderbird
 
 include /etc/sway/config.d/50-systemd-user.conf
 include $HOME/.config/sway/config.d/20-autostart.conf
