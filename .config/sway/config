@@ -72,6 +72,8 @@ input type:pointer {
     tap enabled
 }
 
+seat * hide_cursor 1000
+
 ### Key bindings
 #
 # Basics:
@@ -270,7 +272,12 @@ for_window [shell="xwayland"] title_format "[XWayland] %title"
 for_window [title=".*"] allow_tearing yes
 
 # Autostart
+exec swayosd-server
 exec wlsunset -l -23.9 -L -46.3 -t 2700
+exec swayidle -w \
+         timeout 300 'swaylock -f -c 000000' \
+         timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+         before-sleep 'swaylock -f -c 000000'
 
 include /etc/sway/config.d/50-systemd-user.conf
 include $HOME/.config/sway/config.d/20-autostart.conf
